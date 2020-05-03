@@ -6,4 +6,4 @@ Running time of algorithms on a 240x320 image (04.05.2020):
 - Gamma Correction - 0.345 seconds
 - Reference Color Correction - 1.130 seconds
 - Statistical Color Correction - 1.443 seconds
-- Single-Scale Retinex - 1.021 seconds
+- Single-Scale Retinex (SSR) - 1.021 seconds
