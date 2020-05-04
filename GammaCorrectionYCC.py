@@ -19,9 +19,9 @@ const = 1
 '''
 Wrapping (?)
 
-img[:, :, 1] = 255 \
-    if (const * img[:, :, 1] ** Y > 255).all() \
-    else const * img[:, :, 1] ** Y 
+img[:, :, 0] = 255 \
+    if (const * img[:, :, 0] ** Y > 255).all() \
+    else const * img[:, :, 0] ** Y 
 '''
 
 for i in range(0, shape[0]):
