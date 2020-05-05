@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import cv2
+import numpy as np
 import time
 start_time = time.time()
 
@@ -10,27 +11,17 @@ Color model - HSV
 
 '''
 
-img = cv2.cvtColor(cv2.imread('img/GammaCorrection/girl.jpg'), cv2.COLOR_BGR2HSV)
-shape = img.shape  # Width, height, number of image channels
+img = cv2.cvtColor(cv2.imread('img/GammaCorrection/ball.jpg'), cv2.COLOR_BGR2HSV)
 
 Y = 1
 const = 1
 
-'''
-Wrapping (?)
+# Checking for 'wrapping'
+np.putmask(img[:, :, 2], const * img[:, :, 2] ** Y > 255, 255)
 
-img[:, :, 2] = 255 \
-    if (const * img[:, :, 2] ** Y > 255).all() \
-    else const * img[:, :, 2] ** Y 
-'''
-
-for i in range(0, shape[0]):
-    for j in range(0, shape[1]):
-        value = const * img[i][j][2] ** Y
-        if value > 255:
-            img[i][j][2] = 255
-        else:
-            img[i][j][2] = value
+img = img.astype('float64')
+np.putmask(img[:, :, 2], const * img[:, :, 2] ** Y <= 255, const * img[:, :, 2] ** Y)
+img = img.astype('uint8')
 
 rgb = cv2.cvtColor(img, cv2.COLOR_HSV2RGB)
 

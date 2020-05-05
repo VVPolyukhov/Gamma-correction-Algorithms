@@ -5,7 +5,6 @@ import time
 start_time = time.time()
 
 image = np.array(Image.open('img/LinearCorrection/ball.jpg'))
-shape = image.shape
 
 max_red   = np.max([j[0] for i in image for j in i])
 min_red   = np.min([j[0] for i in image for j in i])
